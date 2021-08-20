@@ -22,6 +22,7 @@ if (isset($_POST['destroy'])) {
 
 if (isset($_GET['edit'])) {
     $car = find($_GET['edit']);
+    // print_r($car);die;
 }
 
 

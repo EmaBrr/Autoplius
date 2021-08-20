@@ -29,12 +29,33 @@ function store() {
 }
 
 function update() {
-
+    $conn = connection();
+    $sql = "UPDATE `cars` SET 
+        `manufacturer` = '".$_POST['manufacturer']."', 
+        `model` = '".$_POST['model']."', 
+        `fuel` = '".$_POST['fuel']."', 
+        `distance` = '".$_POST['distance']."', 
+        `year` = '".$_POST['year']."' 
+        WHERE `cars`.`id` = '".$_POST['edit']."';";
+    // echo $sql; die;
+    $result = $conn->query($sql);
+    $conn->close();
+    return $result;
 }
 
-function find(){
+function find($id){
+    $conn = connection();
+    $sql = "select * from cars where id = '".$id."'";
+    $car = $conn->query($sql);
+    $conn->close();
+    return (array) $car -> fetch_assoc();
+}
 
-
+function destroy(){
+    $conn = connection();
+    $sql = "DELETE FROM `cars` WHERE `cars`.`id` = '".$_POST['destroy']."'";
+    $conn->query($sql);
+    $conn->close();
 }
 
 ?>

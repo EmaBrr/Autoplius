@@ -168,6 +168,7 @@ body .results table tbody td {
   border-top: 1px solid gray;
   padding: 5px 10px;
   vertical-align: top;
+  text-align: center;
 }
 
 body .results table tbody tr:nth-child(even) {

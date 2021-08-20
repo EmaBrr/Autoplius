@@ -65,14 +65,15 @@ if (isset($_GET['edit'])) {
                 <label for="">Distance: </label>
                 <input type="number" name="distance" placeholder="Distance" value = "<?=(isset($car)) ? $car['distance'] : ""?>">
             </div>
-
-            <?php
-            if (isset($car)) {
-                echo '<button type="submit" value="'.$car['id'].'" name = "edit">Atnaujinti</button>';
-            } else {
-                echo '<button type="submit" value="" name = "create">Įrašyti naują įrašą</button>'; //nereikia value paduoti id, nes naują kuriam, tai jis id dar neturi
-            }
-            ?>
+            <div class="buttons" style = "justify-content: center; display: flex;">
+                <?php
+                if (isset($car)) {
+                    echo '<button class = "update" type="submit" value="'.$car['id'].'" name = "edit" style = "background-color: green; padding: 5px 15px; font-size: 15px;">Atnaujinti</button>';
+                } else {
+                    echo '<button class = "create" type="submit" value="" name = "create" style = "color: white; background-color: rgb(70, 75, 117); padding: 5px 15px; font-size: 15px;">Įrašyti naują įrašą</button>'; //nereikia value paduoti id, nes naują kuriam, tai jis id dar neturi
+                }
+                ?>
+            </div>
 
         </form>
     </div>
@@ -96,20 +97,20 @@ if (isset($_GET['edit'])) {
             <?php
                 foreach (all() as $car) {
                     echo '<tr>';
-                            echo '<td>' . $car['id'] . '</td>';
-                            echo '<td>' . $car['manufacturer'] . '</td>';
-                            echo '<td>' . $car['model'] . '</td>';
-                            echo '<td>' . $car['fuel'] . '</td>';
-                            echo '<td>' . $car['year'] . '</td>';
-                            echo '<td>' . $car['distance'] . '</td>';
-                            echo '<td> 
+                            echo '<td align="center">' . $car['id'] . '</td>';
+                            echo '<td align="center">' . $car['manufacturer'] . '</td>';
+                            echo '<td align="center">' . $car['model'] . '</td>';
+                            echo '<td align="center">' . $car['fuel'] . '</td>';
+                            echo '<td align="center">' . $car['year'] . '</td>';
+                            echo '<td align="center">' . $car['distance'] . '</td>';
+                            echo '<td align="center"> 
                                     <form action="" method="get">
-                                        <button type="submit" name = "edit" value="'. $car['id'] .'">Edit</button>
+                                        <button class = "edit" type="submit" name = "edit" value="'. $car['id'] .'" style = "background-color: green; padding: 5px 8px; font-size: 15px;">Edit</button>
                                     </form>
                                 </td>';
-                            echo '<td> 
+                            echo '<td align="center"> 
                                     <form action="" method="post">
-                                        <button type="submit" class = "btn btn-danger" name = "destroy" value="'. $car['id'] .'">Delete</button>
+                                        <button class = "delete" type="submit" name = "destroy" value="'. $car['id'] .'" style = "background-color:#FF6347; padding: 5px 8px; font-size: 15px;">Delete</button>
                                     </form>
                                 </td>';
                             echo  '</tr>';  
